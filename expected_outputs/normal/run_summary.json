@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "frames_read": 316,
+  "frames_processed": 53,
+  "frames_skipped": 263,
+  "total_runtime_s": 5.296,
+  "errors": [],
+  "warnings": [],
+  "videos_found": 1,
+  "videos_completed": 1,
+  "alarms_raised": 0,
+  "device": "cpu",
+  "videos": [
+    {
+      "source_id": "normal_mountain_clouds.mp4",
+      "frames_read": 316,
+      "frames_processed": 53,
+      "frames_skipped": 263,
+      "fps": 30.0,
+      "fps_source": "container",
+      "timestamp_source": "container",
+      "alarms": 0,
+      "summary_image": "images/normal_mountain_clouds_summary.jpg",
+      "runtime_s": 5.295,
+      "warnings": []
+    }
+  ]
+}

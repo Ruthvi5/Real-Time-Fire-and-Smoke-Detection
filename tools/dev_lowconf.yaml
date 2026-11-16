@@ -1,0 +1,62 @@
+# DEVELOPMENT ONLY: low thresholds so every candidate box is cached in predictions.jsonl
+# for tools/evaluate_videos.py. Never submit this file as the final config.
+model:
+  path: ../models/best.pt
+  input_size: 640
+  iou_threshold: 0.5
+  max_detections: 50
+  # Output label -> class name as stored inside the trained model.
+  # Matching is by name, so the class ID order of the training data does not matter.
+  class_names:
+    fire: fire
+    smoke: smoke
+
+runtime:
+  # auto picks cuda:0, then mps, then cpu. --device on the command line overrides this.
+  device: auto
+  half: false
+
+video:
+  # Frames are sampled by time, so behaviour is the same for 10, 25 or 30 fps cameras.
+  # Use 0 to process every decoded frame.
+  sample_fps: 5
+  # Used only when a video does not report a usable frame rate.
+  fallback_fps: 25
+
+detection:
+  # A box is kept (written to predictions.jsonl and used for voting) only above these.
+  confidence:
+    fire: 0.10
+    smoke: 0.10
+  # Ignore boxes smaller than this fraction of the frame area (0 disables).
+  min_box_area_frac: 0.0
+
+motion:
+  # Rejects static look-alikes (lamps, posters, sunsets) from the temporal vote.
+  # Keep disabled unless validation shows it lowers false alarms without missing events.
+  enabled: false
+  compare_seconds: 1.0
+  analysis_width: 320
+  min_mean_abs_diff:
+    fire: 4.0
+    smoke: 2.0
+
+temporal:
+  # Separate settings per class; fire and smoke never suppress each other.
+  fire:
+    window_seconds: 2.0        # look back this far (current and past frames only)
+    min_positive_ratio: 0.6    # share of sampled frames in the window with a detection
+    min_positive_frames: 4     # and at least this many positive frames
+    clear_after_seconds: 3.0   # event ends after this long with no detection
+  smoke:
+    window_seconds: 3.0
+    min_positive_ratio: 0.6
+    min_positive_frames: 6
+    clear_after_seconds: 4.0
+
+alarm:
+  # Minimum gap between the end of one event and a new alarm of the same label.
+  cooldown_seconds: 5.0
+
+output:
+  summary_image: false   # tuning cache only, no pictures needed
