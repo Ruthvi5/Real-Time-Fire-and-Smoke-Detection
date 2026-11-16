@@ -1,0 +1,76 @@
+{
+  "status": "completed",
+  "frames_read": 9263,
+  "frames_processed": 801,
+  "frames_skipped": 8462,
+  "total_runtime_s": 104.85,
+  "errors": [],
+  "warnings": [],
+  "videos_found": 5,
+  "videos_completed": 5,
+  "alarms_raised": 4,
+  "device": "cpu",
+  "videos": [
+    {
+      "source_id": "garden_view.MP4",
+      "frames_read": 240,
+      "frames_processed": 20,
+      "frames_skipped": 220,
+      "fps": 59.975,
+      "fps_source": "container",
+      "timestamp_source": "container",
+      "alarms": 0,
+      "runtime_s": 3.405,
+      "warnings": []
+    },
+    {
+      "source_id": "lamp_fire.MOV",
+      "frames_read": 2652,
+      "frames_processed": 222,
+      "frames_skipped": 2430,
+      "fps": 59.959,
+      "fps_source": "container",
+      "timestamp_source": "container",
+      "alarms": 2,
+      "runtime_s": 28.134,
+      "warnings": []
+    },
+    {
+      "source_id": "mountain_view.MP4",
+      "frames_read": 315,
+      "frames_processed": 53,
+      "frames_skipped": 262,
+      "fps": 29.905,
+      "fps_source": "container",
+      "timestamp_source": "container",
+      "alarms": 0,
+      "runtime_s": 4.221,
+      "warnings": []
+    },
+    {
+      "source_id": "paper_fire_smoke.mov",
+      "frames_read": 5700,
+      "frames_processed": 476,
+      "frames_skipped": 5224,
+      "fps": 59.952,
+      "fps_source": "container",
+      "timestamp_source": "container",
+      "alarms": 2,
+      "runtime_s": 66.945,
+      "warnings": []
+    },
+    {
+      "source_id": "sea_view.mov",
+      "frames_read": 356,
+      "frames_processed": 30,
+      "frames_skipped": 326,
+      "fps": 60.084,
+      "fps_source": "container",
+      "timestamp_source": "container",
+      "alarms": 0,
+      "runtime_s": 2.145,
+      "warnings": []
+    }
+  ],
+  "note": "totals cover the five clips currently in clips/own"
+}

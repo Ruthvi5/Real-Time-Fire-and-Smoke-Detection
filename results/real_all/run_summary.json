@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "frames_read": 1024,
+  "frames_processed": 187,
+  "frames_skipped": 837,
+  "total_runtime_s": 17.168,
+  "errors": [],
+  "warnings": [],
+  "videos_found": 2,
+  "videos_completed": 2,
+  "alarms_raised": 4,
+  "device": "cpu",
+  "videos": [
+    {
+      "source_id": "car_fire.mp4",
+      "frames_read": 361,
+      "frames_processed": 76,
+      "frames_skipped": 285,
+      "fps": 24.0,
+      "fps_source": "container",
+      "timestamp_source": "container",
+      "alarms": 2,
+      "summary_image": "images/car_fire_summary.jpg",
+      "runtime_s": 10.371,
+      "warnings": []
+    },
+    {
+      "source_id": "home_fire.mp4",
+      "frames_read": 663,
+      "frames_processed": 111,
+      "frames_skipped": 552,
+      "fps": 30.0,
+      "fps_source": "container",
+      "timestamp_source": "container",
+      "alarms": 2,
+      "summary_image": "images/home_fire_summary.jpg",
+      "runtime_s": 6.787,
+      "warnings": []
+    }
+  ]
+}

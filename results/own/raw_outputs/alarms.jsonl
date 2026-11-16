@@ -1,0 +1,4 @@
+{"source_id":"lamp_fire.MOV","event_id":"lamp_fire_fire_001","label":"fire","decision_timestamp_s":6.405,"confidence":0.5071,"estimated_onset_s":5.203,"decision_frame_index":384,"positive_frames":6,"window_frames":10}
+{"source_id":"lamp_fire.MOV","event_id":"lamp_fire_smoke_001","label":"smoke","decision_timestamp_s":38.01,"confidence":0.4805,"estimated_onset_s":36.608,"decision_frame_index":2279,"positive_frames":6,"window_frames":10}
+{"source_id":"paper_fire_smoke.mov","event_id":"paper_fire_smoke_fire_001","label":"fire","decision_timestamp_s":7.605,"confidence":0.5573,"estimated_onset_s":6.403,"decision_frame_index":456,"positive_frames":6,"window_frames":10}
+{"source_id":"paper_fire_smoke.mov","event_id":"paper_fire_smoke_smoke_001","label":"smoke","decision_timestamp_s":69.815,"confidence":0.5981,"estimated_onset_s":68.213,"decision_frame_index":4186,"positive_frames":6,"window_frames":10}

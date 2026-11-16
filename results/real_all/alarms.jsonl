@@ -1,0 +1,4 @@
+{"source_id":"car_fire.mp4","event_id":"car_fire_smoke_001","label":"smoke","decision_timestamp_s":5.833,"confidence":0.4102,"estimated_onset_s":4.625,"decision_frame_index":140,"positive_frames":7,"window_frames":11}
+{"source_id":"car_fire.mp4","event_id":"car_fire_fire_001","label":"fire","decision_timestamp_s":6.625,"confidence":0.5365,"estimated_onset_s":5.417,"decision_frame_index":159,"positive_frames":7,"window_frames":11}
+{"source_id":"home_fire.mp4","event_id":"home_fire_smoke_001","label":"smoke","decision_timestamp_s":2.8,"confidence":0.4116,"estimated_onset_s":1.2,"decision_frame_index":84,"positive_frames":7,"window_frames":11}
+{"source_id":"home_fire.mp4","event_id":"home_fire_fire_001","label":"fire","decision_timestamp_s":5.0,"confidence":0.6356,"estimated_onset_s":3.6,"decision_frame_index":150,"positive_frames":7,"window_frames":11}
