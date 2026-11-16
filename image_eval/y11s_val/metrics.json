@@ -1,0 +1,37 @@
+{
+  "model": "y11s_dfire.pt",
+  "split": "val",
+  "data": "dataset/data.yaml",
+  "settings": {
+    "imgsz": 640,
+    "conf": 0.001,
+    "iou": 0.7,
+    "device": "mps"
+  },
+  "all": {
+    "precision": 0.704,
+    "recall": 0.5919,
+    "mAP50": 0.6683,
+    "mAP50_95": 0.3796
+  },
+  "per_class": {
+    "smoke": {
+      "precision": 0.7727,
+      "recall": 0.6607,
+      "mAP50": 0.7367,
+      "mAP50_95": 0.4471
+    },
+    "fire": {
+      "precision": 0.6354,
+      "recall": 0.523,
+      "mAP50": 0.6,
+      "mAP50_95": 0.3121
+    }
+  },
+  "speed_ms_per_image": {
+    "preprocess": 0.17,
+    "inference": 3.24,
+    "loss": 0.0,
+    "postprocess": 17.05
+  }
+}

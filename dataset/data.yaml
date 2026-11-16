@@ -1,0 +1,7 @@
+path: /Users/maramruthvi/Desktop/cv_project/dataset
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: smoke
+  1: fire
