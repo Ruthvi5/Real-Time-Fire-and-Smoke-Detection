@@ -1,0 +1,17 @@
+# Exact versions installed and tested: Python 3.12 (conda) on macOS Apple Silicon, and
+# Python 3.13 on Ubuntu 24.04 x86_64. Install with: pip install -r requirements.txt
+# torch from PyPI includes CUDA support on Linux and MPS support on Apple Silicon.
+
+# inference
+ultralytics==8.4.212
+torch==2.15.0
+torchvision==0.29.2
+opencv-python-headless==5.0.0.93
+numpy==2.5.3
+PyYAML==6.0.3
+
+# training only
+albumentations==2.0.8
+
+# tests only
+pytest==9.1.1

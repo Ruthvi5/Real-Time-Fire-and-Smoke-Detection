@@ -1,0 +1,83 @@
+# Final fixed configuration for fire and smoke detection.
+# Relative paths are resolved against the folder that contains this file,
+# so infer.py works from any working directory.
+#
+# FROZEN. Smoke settings were selected on the 30 official D-Fire validation videos
+# (video_valid.txt) with tools/evaluate_videos.py, choosing the middle of a stable
+# region rather than the single best point. Fire settings could not be tuned on video
+# (those clips contain no fire), so they stay at conservative values checked against
+# the fire false alarms on the same clips. Do not change after looking at test videos.
+
+model:
+  path: models/best.pt         # YOLO11n fine-tuned on D-Fire (models/y11n_dfire.pt)
+  input_size: 640
+  iou_threshold: 0.5
+  max_detections: 50
+  # Output label -> class name as stored inside the trained model.
+  # Matching is by name, so the class ID order of the training data does not matter.
+  class_names:
+    fire: fire
+    smoke: smoke
+
+runtime:
+  # auto picks cuda:0, then mps, then cpu. --device on the command line overrides this.
+  device: auto
+  half: false
+
+video:
+  # Frames are sampled by time, so behaviour is the same for 2, 10, 25 or 30 fps cameras.
+  # Use 0 to process every decoded frame.
+  sample_fps: 5
+  # Used only when a video does not report a usable frame rate.
+  fallback_fps: 25
+
+detection:
+  # A box is kept (written to predictions.jsonl and used for voting) only above these.
+  confidence:
+    fire: 0.35
+    smoke: 0.25
+  # Ignore boxes smaller than this fraction of the frame area (0 disables).
+  min_box_area_frac: 0.0
+  # Very large boxes must clear a higher bar. Fog, low cloud and steam produce large,
+  # weak smoke boxes; real large smoke is usually detected with high confidence.
+  # Disabled for fire, since a nearby fire legitimately fills much of the frame.
+  large_box:
+    area_frac: 0.25
+    min_confidence:
+      fire: 0.0
+      smoke: 0.65
+
+motion:
+  # Rejects static look-alikes from the temporal vote. Tested on validation videos and
+  # gave no benefit (fog moves more than distant smoke), so it stays disabled.
+  enabled: false
+  compare_seconds: 1.0
+  analysis_width: 320
+  min_mean_abs_diff:
+    fire: 4.0
+    smoke: 2.0
+
+temporal:
+  # Separate settings per class; fire and smoke never suppress each other.
+  fire:
+    window_seconds: 2.0        # look back this far (current and past frames only)
+    min_positive_ratio: 0.6    # share of sampled frames in the window with a detection
+    min_positive_frames: 4     # and at least this many positive frames
+    clear_after_seconds: 8.0   # event ends after this long with no detection
+  smoke:
+    window_seconds: 2.0
+    min_positive_ratio: 0.6
+    min_positive_frames: 3
+    clear_after_seconds: 8.0
+
+alarm:
+  # Minimum gap between the end of one event and a new alarm of the same label.
+  cooldown_seconds: 5.0
+
+output:
+  # Besides the three required files, write one picture per video to <output-dir>/images/:
+  # the list of alarms and six frames with their detection boxes (including the onset and alarm
+  # frames). Made during the same pass over the video; it never changes detections or alarms.
+  summary_image: true
+  summary_frames: 6
+  summary_note: "YOLO11n, final config.yaml"
